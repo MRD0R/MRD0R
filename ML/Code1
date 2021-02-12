@@ -1,0 +1,29 @@
+import numpy as np
+import re
+def cos_distance(x,y):
+    a = x@y
+    b = np.sqrt(x@x)
+    c = np.sqrt(y@y)
+    c = 1 - c/(a*b)
+    return c
+
+f = open(r'C:\Users\Admin\Desktop\sentences.txt','r')
+
+lines = f.read().lower().split('\n')
+
+for line in lines:
+    a = []
+    for string in re.split('[^a-z]',line.lower()):
+        if string != "":
+            a.append(string)
+            
+words = list(set([word for sentence in a for word in sentence]))
+index_word = {word : i for i, word in enumerate(words)}
+matrix = np.zeros((len(lines),len(index_word)))
+
+for i,sentence in enumerate(a):
+    for word in sentence:
+        matrix[i,index_word[word]] = sentence.count(word)
+        
+distances = np.array([cos_distance(matrix[0], matrix[i]) for i in range(1, matrix.shape[0])])
+near_sentence = np.argsort(distances)[:2]+1

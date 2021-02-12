@@ -7,6 +7,7 @@ P(x,y) = 1 - (x^T * y) : (|x| * |y|)
 (A^T * C) : (|A| * |C|) = 0
 (B^T * C) : (|B| * |C|) = sqrt(2)/2
 (A^T * B) : (|A| * |B|) = sqrt(2)/2
+Таким образом наша формула преобразуется в 1 >= sqrt(2)  ==>  1 >= 2  . Противоречие.
 <!--
 **MRD0R/MRD0R** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
